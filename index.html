@@ -3,14 +3,61 @@
 <head>
 	<meta charset="UTF-8">
 	<title>js_13-14</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/tmpl.js"></script>
-  <script src="js/render.js"></script>
-  <script src="js/script.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/tmpl.js"></script>
+	<script src="js/testlist.js"></script>
+	<script src="js/render.js"></script>
+	<script src="js/script.js"></script>
 </head>
 <body>
+
+	<script type="text/html" id="test">
+
+		<h3 class="title">Тест по программированию</h3>
+
+		<form action="#" class="form">
+
+			<ol>
+
+				<% for(var i = 0; i < data.length; i++) { %>
+
+				<li>
+
+					<h5><%= data[i].question %></h5>
+					<div>
+						<label>
+							<input type="checkbox">
+							<%= data[i].answers[0] %>
+						</label>
+						<br>
+						<label>
+							<input type="checkbox">
+							<%= data[i].answers[1] %>
+						</label>
+						<br>
+						<label>
+							<input type="checkbox">
+							<%= data[i].answers[2] %>
+						</label>
+						<br>
+					</div>
+
+				</li>
+
+				<% }; %>
+
+			</ol>
+
+			<button class="btn btn-primary">Проверить мои результаты</button>
+
+		</form>
+
+	</script>
+
+
+
 
 </body>
 </html>

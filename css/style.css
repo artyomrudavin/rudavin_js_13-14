@@ -1,0 +1,19 @@
+.title {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+ol {
+	margin-left: 15%;
+}
+
+.btn {
+	margin-left: 40%;
+	margin-bottom: 50px;
+}
+
+ol div {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
