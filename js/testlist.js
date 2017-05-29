@@ -9,7 +9,7 @@ $(function() {
 		'Вариант ответа № 2',
 		'Вариант ответа № 3'
 		],
-		correct: 1
+		correct: [true, false, false]
 	},
 	{
 		question: 'Вопрос № 2',
@@ -18,7 +18,7 @@ $(function() {
 		'Вариант ответа № 2',
 		'Вариант ответа № 3'
 		],
-		correct: 3
+		correct: [false, true, false]
 	},
 	{
 		question: 'Вопрос № 3',
@@ -27,7 +27,7 @@ $(function() {
 		'Вариант ответа № 2',
 		'Вариант ответа № 3'
 		],
-		correct: 2
+		correct: [true, false, true]
 	}];
 	
 	localStorage.setItem('testlist', JSON.stringify(testlist));
