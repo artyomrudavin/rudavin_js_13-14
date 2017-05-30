@@ -40,11 +40,15 @@ li:last-child {
 	display: block;
 }
 
-.modal-dialog {
-	margin-top: 150px;
+.modal .btn {
+	margin: 20px 0 0 0;
 }
 
 .modal-content {
+	margin: 0 auto;
+	padding: 20px;
+	width: 50%;
+	margin-top: 150px;
 	box-shadow: 0 3px 9px rgba(0,0,0,.5);
 }
 

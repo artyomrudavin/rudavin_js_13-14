@@ -83,14 +83,14 @@ $(function(){
 		};
 
 		//показуємо результат
-		$(".modale").removeClass('hide');
-		var message = "Ви набрали ";
+		$(".modal").removeClass('hide');
+		var message = "Вы набрали ";
 		if (rez <= 3 ){
-			message = message + rez + " бала(ів). Ви не здали Тест.";
+			message = message + rez + " балла(ов). Вы не сдали Тест.";
 		} else{
-			message = message + rez + " бала(ів). Вітаємо! Ви здали Тест.";
+			message = message + rez + " балла(ов). Поздравляю! Вы сдали Тест.";
 		}
-		$('.modale-body').append(message);
+		$('.modal-body').append(message);
 		
 	});
 
@@ -98,8 +98,8 @@ $(function(){
 	$('.close-button').click(function(event){
 		event.preventDefault();
 		$(":input").prop("checked", false);
-		$('.modale-body').empty();
-		$(".modale").addClass('hide');
+		$('.modal-body').empty();
+		$(".modal").addClass('hide');
 	});
 
 });
