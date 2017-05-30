@@ -1,6 +1,6 @@
 'use strict';
 
-$(function(){
+$(function() {
 
 	var data = [
 	{
@@ -9,7 +9,7 @@ $(function(){
 		ansver1: 'Вариант ответа № 1',
 		ansver2: 'Вариант ответа № 2',
 		ansver3: 'Вариант ответа № 3',
-		right: [false, true, true]	
+		correct: [false, true, true]	
 	},
 	{
 		questionNum: 2,
@@ -17,7 +17,7 @@ $(function(){
 		ansver1: 'Вариант ответа № 1',
 		ansver2: 'Вариант ответа № 2',
 		ansver3: 'Вариант ответа № 3',
-		right: [true, false, false]	
+		correct: [true, false, false]	
 	},
 	{
 		questionNum: 3,
@@ -25,82 +25,95 @@ $(function(){
 		ansver1: 'Вариант ответа № 1',
 		ansver2: 'Вариант ответа № 2',
 		ansver3: 'Вариант ответа № 3',
-		right: [true, false, true]	
+		correct: [true, false, true]	
 	}];
 
+
+	// отправляем в localStorage
 	localStorage.setItem('test', JSON.stringify(data));
+	
+
+	// рендерим тест с вопросами
 	var html = $('#test').html();
-	
-	
 	var testList = JSON.parse(localStorage.getItem('test'));
 	
-	//виводимо питання на екран
-	for (var i = 0; i < testList.length; i++){
+	for (var i = 0; i < testList.length; i++) {
 		var content = tmpl(html, testList[i]);
 		$('#test').before(content);
 	}
 
-	//встановлюємо обробник кліка на кнопку
-	$('#check-button').click(function(event){
-		event.preventDefault();
-		
-		var rez = 0;
-			var ansverRez = []; //масив для запису стану чекбосів
-			var qurentRez = 0; //для підрахунку балів
 
-		//проходимо по питаннях
-		for (var i = 0; i < testList.length; i++){ 
-			
-			// console.log("question № ", i+1, "==========================================");
+	// обработчик клика
+	$('#check-btn').on('click', function(e) {
+
+		e.preventDefault();
+		
+		var result = 0;
+		var answerResult = []; 
+		var correctResult = 0; 
+
+		for (var i = 0; i < testList.length; i++) { 
 			
 			var questionObj = document.getElementById("q"+(i+1));
-			var ansverObj = testList[i].right; //масив вірних відповідей
-			//проходимо по чекбоксах, записуємо результати в масив
-			$(questionObj).find("input").each(function(i){
-				if( $(this).prop("checked") == true){
-					ansverRez.push(true);
+			var answerObj = testList[i].correct;
+			
+			$(questionObj).find("input").each(function(i) {
+
+				if( $(this).prop("checked") == true) {
+					answerResult.push(true); 
 				} else {
-					ansverRez.push(false);
+					answerResult.push(false); 
 				};
+
 			});
 			
-			//порівнюємо масив отриманих відповідей з масивом вірних відповідей
-			for (var j = 0; j < ansverRez.length; j++){
-				if ((ansverRez[j] == true)&&(ansverObj[j] == true) ){//відмічено правельний чекбокс
-					qurentRez = qurentRez + 1;
+			
+			for (var j = 0; j < answerResult.length; j++) { 
+
+				if ((answerResult[j] == true) && (answerObj[j] == true) ) {
+					correctResult = correctResult + 1;
 				} else {
-					if ((ansverRez[j] == true)&&(ansverObj[j] == false) ){//відмічено не правильний чекбокс
-						qurentRez = false;
-						j = ansverRez.length;
+					if ((answerResult[j] == true) && (answerObj[j] == false) ) {
+						correctResult = false;
+						j = answerResult.length;
 					}
 				};
+
 			};
-			//якщо не було неправильної відповіді сумуємо бали за правильно відмічені чекбокси
-			if (qurentRez) {
-				rez = rez + qurentRez;
+
+			if (correctResult) {
+				result = result + correctResult;
 			}
-			ansverRez = []; //обнуляємо масив стану чекбоксів пред наступним проходом(питанням)
-			qurentRez = 0;  //обнуляємо поточну кількість вірних відповідей перед наступним питанням 
+
+			answerResult = []; 
+			correctResult = 0;
+
 		};
 
-		//показуємо результат
 		$(".modal").removeClass('hide');
+
 		var message = "Вы набрали ";
-		if (rez <= 3 ){
-			message = message + rez + " балла(ов). Вы не сдали Тест.";
-		} else{
-			message = message + rez + " балла(ов). Поздравляю! Вы сдали Тест.";
+
+		if (result <= 3 ) {
+			message = message + result + " балла(ов). Вы не сдали Тест.";
+		} else {
+			message = message + result + " балла(ов). Поздравляю! Вы сдали Тест.";
 		}
-		$('.modal-body').append(message);
+
+		$('.modal-body p').append(message);
 		
 	});
 
-	//встановлюємо обробник кліка на кнопку закриття модального вікна
-	$('.close-button').click(function(event){
-		event.preventDefault();
+
+	// обработчик на кнопку закрытия модального окна
+	$('.close-btn').on('click', function(e) {
+
+		e.preventDefault();
+
 		$(":input").prop("checked", false);
-		$('.modal-body').empty();
+		$('.modal-body p').empty();
 		$(".modal").addClass('hide');
+
 	});
 
 });
