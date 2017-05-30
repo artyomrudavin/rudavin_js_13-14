@@ -9,7 +9,7 @@ $(function() {
 		ansver1: 'Вариант ответа № 1',
 		ansver2: 'Вариант ответа № 2',
 		ansver3: 'Вариант ответа № 3',
-		correct: [false, true, true]	
+		correct: [true, true, true]	
 	},
 	{
 		questionNum: 2,
@@ -17,7 +17,7 @@ $(function() {
 		ansver1: 'Вариант ответа № 1',
 		ansver2: 'Вариант ответа № 2',
 		ansver3: 'Вариант ответа № 3',
-		correct: [true, false, false]	
+		correct: [true, true, false]	
 	},
 	{
 		questionNum: 3,
@@ -25,7 +25,7 @@ $(function() {
 		ansver1: 'Вариант ответа № 1',
 		ansver2: 'Вариант ответа № 2',
 		ansver3: 'Вариант ответа № 3',
-		correct: [true, false, true]	
+		correct: [false, false, true]	
 	}];
 
 
