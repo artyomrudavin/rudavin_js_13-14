@@ -1,7 +1,8 @@
-'use strict;'
+'use strict';
+
 $(function(){
 
-	var testData = [
+	var data = [
 	{
 		questionNum: 1,
 		question: 'Вопрос № 1',
@@ -27,14 +28,14 @@ $(function(){
 		right: [true, false, true]	
 	}];
 
-	localStorage.setItem('test', JSON.stringify(testData));
+	localStorage.setItem('test', JSON.stringify(data));
 	var html = $('#test').html();
 	
 	
 	var testList = JSON.parse(localStorage.getItem('test'));
 	
 	//виводимо питання на екран
-	for (i = 0; i < testList.length; i++){
+	for (var i = 0; i < testList.length; i++){
 		var content = tmpl(html, testList[i]);
 		$('#test').before(content);
 	}
@@ -48,7 +49,7 @@ $(function(){
 			var qurentRez = 0; //для підрахунку балів
 
 		//проходимо по питаннях
-		for (i = 0; i < testList.length; i++){ 
+		for (var i = 0; i < testList.length; i++){ 
 			
 			// console.log("question № ", i+1, "==========================================");
 			
@@ -64,7 +65,7 @@ $(function(){
 			});
 			
 			//порівнюємо масив отриманих відповідей з масивом вірних відповідей
-			for (j = 0; j < ansverRez.length; j++){
+			for (var j = 0; j < ansverRez.length; j++){
 				if ((ansverRez[j] == true)&&(ansverObj[j] == true) ){//відмічено правельний чекбокс
 					qurentRez = qurentRez + 1;
 				} else {
