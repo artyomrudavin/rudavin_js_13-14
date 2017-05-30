@@ -7,73 +7,52 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/tmpl.js"></script>
-	<script src="js/testlist.js"></script>
-	<script src="js/render.js"></script>
 	<script src="js/script.js"></script>
 </head>
 <body>
 
-	<script type="text/html" id="test">
-
+	<div class="wrapper">
 		<h3 class="title">Тест по программированию</h3>
+		<form id="form">
+			
+			<script type="text/html" id='test'>
 
-		<form action="#" class="form">
+				<div class="test-elem">
+					<ul class="ul-elem" id="q<%= questionNum %>"><%= question %>
+						<li class="ul-li-elem">
+							<label><input type="checkbox" id="checkbox-1"><%= ansver1 %> </label>
+						</li>
+						<li class="ul-li-elem">
+							<label><input type="checkbox" id="checkbox-2"><%= ansver2 %> </label>
+						</li>
+						<li class="ul-li-elem">
+							<label><input type="checkbox" id="checkbox-3"><%= ansver3 %> </label>
+						</li>
+					</ul>
+				</div>
 
-			<ol>
+			</script>
+			
+			<button class="check-button btn btn-primary" value="checkbutton" id="check-button">Проверить мои результаты</button>
+		</form>
+	</div>
 
-				<% for(var i = 0; i < data.length; i++) { %>
-
-				<li>
-
-					<h5><%= data[i].question %></h5>
-					<div>
-						<label>
-							<input type="checkbox">
-							<%= data[i].answers[0] %>
-						</label>
-						<br>
-						<label>
-							<input type="checkbox">
-							<%= data[i].answers[1] %>
-						</label>
-						<br>
-						<label>
-							<input type="checkbox">
-							<%= data[i].answers[2] %>
-						</label>
-						<br>
-					</div>
-
-				</li>
-
-				<% }; %>
-
-			</ol>
-
-			<button class="btn btn-primary result">Проверить мои результаты</button>
-
-			<div class="modal hide">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Ваша оценка за тест.</h4>
-						</div>
-						<div class="modal-body">
-							<p></p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary reset">Еще раз</button>
-						</div>
-					</div>
+	<div class="modale hide">
+		<div class="modale-wrapper">
+			<div class="modale-content">
+				<div class="modale-header">
+					<h4 class="modale-title">Ваші результати.</h4>
 				</div>
 			</div>
+			<div class="modale-body">
 
-		</form>
-
-	</script>
-
-
-
+			</div>
+			
+			<div class="modale-footer">
+				<button class="close-button">Close</button>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

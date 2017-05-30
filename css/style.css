@@ -4,7 +4,7 @@
 	margin-bottom: 50px;
 }
 
-ol {
+.test-elem {
 	margin-left: 15%;
 }
 
@@ -13,8 +13,26 @@ ol {
 	margin-bottom: 50px;
 }
 
-ol div {
+input {
+	margin-right: 10px;
+}
+
+ul {
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+
+li {
+	font-size: 1rem;
+	list-style: none;
+	font-weight: 400;
+}
+
+li:first-child {
 	margin-top: 20px;
+}
+
+li:last-child {
 	margin-bottom: 20px;
 }
 

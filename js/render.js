@@ -3,12 +3,11 @@ $(function() {
 
 	var html = $('#test').html();
 
-	var questions = JSON.parse(localStorage.getItem('testlist'));
+	var testList = JSON.parse(localStorage.getItem('testlist'));
 	
-	var content = tmpl(html, {
-		data: questions
-	});
-
-	$('body').append(content);
+	for (i = 0; i < testList.length; i++){
+		var content = tmpl(html, testList[i]);
+		$('#test').before(content);
+	}
 
 });
